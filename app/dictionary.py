@@ -40,20 +40,16 @@ if __name__ == '__main__':
         dictionary_data = json.load(f)
     user_word = get_user_word()
     definitions = get_word_definitions(user_word)
-
+    correction = get_possible_correction(user_word)
     if definitions:
         print_definitions(definitions)
 
-    else:
-        correction = get_possible_correction(user_word)
-        if correction:
-            user_confirmation = confirm_correction(correction['word'])
-
-            if user_confirmation:
-                print_definitions(correction['definitions'])
-
-            else:
-                print("Please check your spelling.")
-
+    elif correction:
+        user_confirmation = confirm_correction(correction['word'])
+        if user_confirmation:
+            print_definitions(correction['definitions'])
         else:
-            print(f"Sorry, {user_word} is not in this dictionary.")
+            print("Please check your spelling.")
+
+    else:
+        print(f"Sorry, {user_word} is not in this dictionary.")
