@@ -12,7 +12,7 @@ def get_user_word() -> str:
         print("Your word must contain letters.\n")
 
 
-def get_word_definitions(word: str) -> list:
+def get_word_definitions(word: str) -> Optional[list]:
     return dictionary_data.get(word) or \
            dictionary_data.get(word.title()) or \
            dictionary_data.get(word.upper())
