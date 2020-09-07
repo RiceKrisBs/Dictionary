@@ -13,7 +13,9 @@ def get_user_word() -> str:
 
 
 def get_word_definitions(word: str) -> list:
-    return dictionary_data.get(word) or dictionary_data.get(word.title())
+    return dictionary_data.get(word) or \
+           dictionary_data.get(word.title()) or \
+           dictionary_data.get(word.upper())
 
 
 def print_definitions(definitions: list) -> NoReturn:
